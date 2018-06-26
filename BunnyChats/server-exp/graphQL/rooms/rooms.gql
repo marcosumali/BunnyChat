@@ -1,0 +1,35 @@
+type Room {
+  userId_owner: String,
+  userId_recipient: String,
+  createdAt: String,
+  updatedAt: String,
+  key: String,
+  chats: [Chat]
+}
+
+type Chat {
+  message: String,
+  userId_sender: String,
+  createdAt: String,
+  updatedAt: String,
+  key: String
+}
+
+type Query {
+  roomsByUser(key: String): [Room]
+  rooms: [Room]
+  chat(key: String): Chat
+  chats: [Chat]
+}
+
+type Mutation {
+  addRoom(
+    userId_owner: String,
+    userId_recipient: String,
+  ): Room
+  addChat(
+    message: String,
+    userId_sender: String,
+    room_key: String,
+  ): Chat
+}
